@@ -86,7 +86,7 @@ Job-Market-Pipeline/
 ├── run_pipeline.bat           # Windows execution script
 ├── run_pipeline.sh            # Linux/macOS execution script
 └── README.md                  # Project Documentation
-
+```
 
 ## Technologies Used
 
