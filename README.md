@@ -26,15 +26,15 @@ API Endpoint:
 
 https://remoteok.com/api
 
-The pipeline extracts:
+## The pipeline extracts:
 
-Job title
-Company
-Location
-Salary ranges
-Skills/tags
-Job posting date
-Direct job link
+* Job title
+* Company
+* Location
+* Salary ranges
+* Skills/tags
+* Job posting date
+* Direct job link
 
 ## Pipeline Architecture
 
@@ -54,207 +54,67 @@ GitHub CI/CD
       ↓
 Power BI Dashboard
 
-## Project Structure
+## 📂 Project Structure
+
+```text
 Job-Market-Pipeline/
-│
-├── app/
-│   ├── __init__.py
-│   ├── extract.py
-│   ├── transform.py
-│   ├── load.py
-│   ├── main.py
-│   └── utils.py
-│
-├── config/
-│   ├── __init__.py
+├── .github/
+│   └── workflows/
+│       └── ci.yml             # CI/CD pipeline configuration
+├── app/                       # Main Application Logic
+│   ├── extract.py             # World Bank API data ingestion
+│   ├── transform.py           # Data cleaning & GDP processing
+│   ├── load.py                # PostgreSQL database loading
+│   ├── main.py                # Pipeline entry point
+│   ├── utils.py               # Shared helper functions
+│   └── __init__.py
+├── config/                    # Environment & App configuration
 │   └── config.py
-│
-├── db/
-│   └── schema.sql
-│
-├── tests/
-│   ├── __init__.py
+├── db/                        # Database Schema & Migrations
+│   └── schema.sql             # SQL table definitions
+├── tests/                     # Automated Unit Testing
 │   ├── test_extract.py
 │   ├── test_transform.py
 │   └── test_load.py
-│
-├── logs/
+├── logs/                      # Application runtime logs
 │   └── pipeline.log
-│
-├── .github/
-│   └── workflows/
-│       └── ci.yml
-│
-├── .env
-├── .gitignore
-├── requirements.txt
-├── Dockerfile
-├── docker-compose.yml
-├── run_pipeline.bat
-├── run_pipeline.sh
-└── README.md
+├── .env                       # Environment variables (Local Only)
+├── .gitignore                 # Files to exclude from Git
+├── requirements.txt           # Python library dependencies
+├── Dockerfile                 # Docker image configuration
+├── docker-compose.yml         # Container orchestration
+├── run_pipeline.bat           # Windows execution script
+├── run_pipeline.sh            # Linux/macOS execution script
+└── README.md                  # Project Documentation
+
 
 ## Technologies Used
-Layer	Technology
-Language	Python
-Data Processing	pandas
-API Requests	requests
-Database	PostgreSQL
-ORM	SQLAlchemy
-Containerization	Docker
-Orchestration	Docker Compose
-Testing	pytest
-CI/CD	GitHub Actions
-Visualization	Power BI
-IDE	VS Code
-Features
-Extracts latest job postings from RemoteOK API
-Loads up to 150 latest jobs per execution
-Daily pipeline automation
-PostgreSQL database integration
-Duplicate prevention using unique job URLs
-Dockerized ETL pipeline
-Automated testing with pytest
-CI/CD with GitHub Actions
-Power BI-ready schema
-Logging and monitoring support
-Database Schema
-CREATE TABLE IF NOT EXISTS job_postings (
-    id SERIAL PRIMARY KEY,
-    company TEXT,
-    position TEXT,
-    location TEXT,
-    salary_min FLOAT,
-    salary_max FLOAT,
-    skills TEXT,
-    posted_date DATE,
-    job_url TEXT UNIQUE,
-    source TEXT,
-    inserted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-Setup Instructions
-1. Clone Repository
-git clone https://github.com/YOUR_USERNAME/job-market-pipeline.git
 
-cd job-market-pipeline
-2. Create Virtual Environment
-PowerShell
-python -m venv .venv
+* Layer	Technology
+* Language	Python
+* Data Processing	pandas
+* API Requests	requests
+* Database	PostgreSQL
+* ORM	SQLAlchemy
+* Containerization	Docker
+* Orchestration	Docker Compose
+* Testing	pytest
+* CI/CD	GitHub Actions
+* Visualization	Power BI
+* IDE	VS Code
 
-.venv\Scripts\Activate.ps1
-Git Bash
-python -m venv .venv
+## Features
 
-source .venv/Scripts/activate
-3. Install Dependencies
-pip install -r requirements.txt
-Environment Variables
-
-Create a .env file in project root.
-
-DB_HOST=127.0.0.1
-DB_PORT=5432
-DB_NAME=job_market
-DB_USER=postgres
-DB_PASSWORD=yourpassword
-Running the Pipeline
-Run manually
-python -m app.main
-Automated Execution
-Windows
-.\run_pipeline.bat
-Git Bash / Linux
-./run_pipeline.sh
-
-The pipeline can also be scheduled daily using:
-
-Windows Task Scheduler
-cron jobs
-Docker scheduling
-Apache Airflow (future improvement)
-Running Tests
-pytest
-Docker Setup
-Build containers
-docker-compose build
-Run containers
-docker-compose up
-PostgreSQL Verification
-
-Connect using pgAdmin or psql.
-
-Example query:
-
-SELECT COUNT(*) AS total_jobs
-FROM job_postings;
-Power BI Integration
-
-Inside Power BI:
-
-Get Data → PostgreSQL
-
-Use:
-
-Setting	Value
-Server	localhost
-Port	5432
-Database	job_market
-Suggested Dashboard Analytics
-Top hiring companies
-Most requested skills
-Salary distributions
-Jobs by location
-Daily job trends
-Remote work trends
-GitHub CI/CD
-
-GitHub Actions automatically:
-
-installs dependencies
-runs tests
-validates pipeline integrity
-
-Workflow file:
-
-.github/workflows/ci.yml
-Logging
-
-Pipeline execution logs are stored in:
-
-logs/pipeline.log
-Future Improvements
-
-## Potential enhancements:
-
-Apache Airflow orchestration
-Kafka streaming ingestion
-AWS deployment
-dbt transformations
-Streamlit dashboard
-FastAPI endpoints
-Data quality validation
-Historical trend analysis
-
-## Portfolio Value
-
-This project demonstrates practical skills in:
-
-ETL pipeline development
-Data engineering
-API integration
-PostgreSQL database management
-Docker containerization
-CI/CD engineering
-Analytics engineering
-BI dashboard integration
-
-Suitable for roles such as:
-
-Data Analyst
-Data Engineer
-Analytics Engineer
-BI Developer
-Junior DataOps / DevOps Engineer
+* Extracts latest job postings from RemoteOK API
+* Loads up to 150 latest jobs per execution
+* Daily pipeline automation
+* PostgreSQL database integration
+* Duplicate prevention using unique job URLs
+* Dockerized ETL pipeline
+* Automated testing with pytest
+* CI/CD with GitHub Actions
+* Power BI-ready schema
+* Logging and monitoring support
 
 ## Author
 
