@@ -9,16 +9,16 @@ Project Objectives
 
 This project was built to demonstrate practical skills in:
 
-Web scraping and API ingestion
-ETL pipeline development
-Data transformation using pandas
-PostgreSQL database integration
-Docker containerization
-GitHub CI/CD automation
-Workflow scheduling
-Data analytics engineering
-Power BI integration
-Data Source
+* Web scraping and API ingestion
+* ETL pipeline development
+* Data transformation using pandas
+* PostgreSQL database integration
+* Docker containerization
+* GitHub CI/CD automation
+* Workflow scheduling
+* Data analytics engineering
+* Power BI integration
+* Data Source
 
 Source: RemoteOK API
 
